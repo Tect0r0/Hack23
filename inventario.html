@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>QuesaGods</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload = "hora()">
+    
+    <script>
+        window.onload=function(){
+            hora();
+            aparecer();
+            aparecer2();
+            desaparecer3();
+            desaparecer4();
+            desaparecer5();
+        }
+         var tf = 1;
+         var tf2 = 1;
+         var tf3 = 2;
+         var tf4 = 2;
+         var tf5 = 2;
+        /*var canasta = ["Chorizo", "Papa", "Chicharrón", "Deshebrada", "Frijol"]
+        var harina = [25, 30, 23, 33, 40]
+        var maiz = [5, 30, 23, 33, 40]
+        
+
+        
+        function llenartabla(){
+
+            var texto = "";
+
+            for(var i=0; i<canasta.length; i++){
+                texto = texto + "<tr>";
+                texto = texto + "<td>" + canasta[i] + "</td>";
+                texto = texto + "<td>" + harina[i] + "</td>";
+                texto = texto + "<td>" + maiz[i] + "</td>";
+                texto = texto + "</tr>";
+            }
+
+            document.getElementById("canasta").innerHTML = texto;
+
+            function aparecer(){
+                var ap = true;
+                if(ap==false){
+                    document.getElementById("resultado").style.display = "none";
+                    ap!=ap;
+                } else{
+                    document.getElementById("resultado").style.display = "block";
+                }
+
+                
+                
+        }
+
+        */
+
+        
+        function cambiar(){
+            tf = tf + 1;
+            if(tf%2==0){
+                desaparecer();
+            } else{
+                aparecer();
+            }
+        }
+        function desaparecer(){
+            document.getElementById("har").style.display = "none";
+        }
+        function aparecer(){
+            document.getElementById("har").style.display = "block";
+        }
+        function cambiar2(){
+            tf2 = tf2 + 1;
+            if(tf2%2==0){
+                desaparecer2();
+            } else{
+                aparecer2();
+            }
+        }
+        function desaparecer2(){
+            document.getElementById("maz").style.display = "none";
+        }
+        function aparecer2(){
+            document.getElementById("maz").style.display = "block";
+        }
+        function cambiar3(){
+            tf3 = tf3 + 1;
+            if(tf3%2==0){
+                desaparecer3();
+            } else{
+                aparecer3();
+            }
+        }
+        function desaparecer3(){
+            document.getElementById("nor").style.display = "none";
+        }
+        function aparecer3(){
+            document.getElementById("nor").style.display = "block";
+        }
+        function cambiar4(){
+            tf4 =tf4 + 1;
+            if(tf4%2==0){
+                desaparecer4();
+            } else{
+                aparecer4();
+            }
+        }
+        function desaparecer4(){
+            document.getElementById("cho").style.display = "none";
+        }
+        function aparecer4(){
+            document.getElementById("cho").style.display = "block";
+        }
+        function cambiar5(){
+            tf5 = tf5 + 1;
+            if(tf5%2==0){
+                desaparecer5();
+            } else{
+                aparecer5();
+            }
+        }
+        function desaparecer5(){
+            document.getElementById("pap").style.display = "none";
+        }
+        function aparecer5(){
+            document.getElementById("pap").style.display = "block";
+        }
+
+
+        function hora(){
+            var d = new Date();
+            var hora = d.getHours();
+            var min = d.getMinutes();
+            var seg = d.getSeconds();
+
+            var segundos = "";
+            if(seg<10){
+                segundos = "0" + seg;
+            } else{
+                segundos = "" + seg;
+            }
+
+            var minutos = "";
+            if(min<10){
+                minutos = "0" + min;
+            } else{
+                minutos = "" + min;
+            }
+
+            var horas = "";
+            if(hora<10){
+                horas = "0" + hora;
+            } else{
+                horas = "" + hora;
+            }
+
+            document.getElementById("time").innerHTML = horas + ":" + minutos + ":" + segundos;
+        }
+        setInterval(hora, 1000);
+    </script>
+
+<div class="menupaginas">
+    <p class="timep" id="time"></p>
+    <h1 class="maintitle">PhatManagement</h1>
+    <div class="pagebutton"><a href="inventario.html">Inventario</a></div>
+    <div class="pagebutton"><a href="ventas.html">Ventas</a></div>
+    <div class="pagebutton"><a href="gastos.html">Gastos</a></div>
+    <div class="pagebutton"><a href="indexH.html"><img class="tortimg" src="images/home.png"></a></div>
+</div>
+
+<div class="intro">
+    <p class="rimg">Haga click en los productos para revelar/esconder las imágenes</p>
+    <h1 class="bienvenido2">Tortillas:</h1>
+    <div class="botonpr" onClick="cambiar()"><h2>Harina</h2></div>
+    <div class="botonpr" onClick="cambiar2()"><h2>Maiz</h2></div>
+    <div class="half2" ><img class="tortimg" id="har" src="images/harina.jpg"></div>
+    <div class="half2" ><img class="tortimg" id="maz" src="images/maiz.jpg"></div><br>
+    <h1 class="bienvenido2">Guisos extra:</h1>
+    <div class="botonpr2" onClick="cambiar3()"><h2>Chicharrón</h2></div>
+    <div class="botonpr2" onClick="cambiar4()"><h2>Pollo</h2></div>
+    <div class="botonpr2" onClick="cambiar5()"><h2>Chorizo</h2></div>
+    <div class="third2" ><img class="tortimg" id="nor" src="images/qchrojo.jpg"></div>
+    <div class="third2" ><img class="tortimg" id="cho" src="images/qpollo.jpg"></div>
+    <div class="third2" ><img class="tortimg" id="pap" src="images/qchorizo.jpg"></div>
+
+
+
+
+    <!--table>
+        <tr>
+            <th>Guiso</th>
+            <th>Harina</th>
+            <th>Maiz</th>
+        </tr>
+
+        <tbody id="canasta">
+
+        </tbody>
+
+       
+    </table-->
+</div>
+</body>

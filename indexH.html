@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>PhatManagement</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body onload="hora()">
+    <script>
+
+
+        function hora(){
+            var d = new Date();
+            var hora = d.getHours();
+            var min = d.getMinutes();
+            var seg = d.getSeconds();
+
+            var segundos = "";
+            if(seg<10){
+                segundos = "0" + seg;
+            } else{
+                segundos = "" + seg;
+            }
+
+            var minutos = "";
+            if(min<10){
+                minutos = "0" + min;
+            } else{
+                minutos = "" + min;
+            }
+
+            var horas = "";
+            if(hora<10){
+                horas = "0" + hora;
+            } else{
+                horas = "" + hora;
+            }
+
+            document.getElementById("time").innerHTML = horas + ":" + minutos + ":" + segundos;
+        }
+        setInterval(hora, 1000);
+    </script>
+
+
+
+<div class="menupaginas">
+    <p class="timep" id="time"></p>
+    <h1 class="maintitle">PhatManagement</h1>
+    <div class="pagebutton"><a href="inventario.html">Inventario</a></div>
+    <div class="pagebutton"><a href="ventas.html">Ventas</a></div>
+    <div class="pagebutton"><a href="gastos.html">Gastos</a></div>
+    <div class="pagebutton"><a href="indexH.html"><img class="tortimg" src="images/home.png"></a></div>
+</div>
+
+<div class="intro">
+    <h1 class="bienvenido">¡Bienvenid@ a PhatManagement!</h1>
+    <h2 class="dioses">"Aqui manejamos GORDOS"</h2>
+    <div class="half"><img class="tortimg" src="images/fat1.jpg"></div>
+    <div class="half"><img class="tortimg" src="images/fat2.jpg"></div><br>
+    <p class="hym">Tenemos gordos</p><p class="hym">Y</p><p class="hym">Tenemos GORDOS</p>
+    <div class="cal"><h2>Calientitos y pachonchitos!</h2></div>
+    <p class="hym2">Chicharrón</p><p class="hym2">Pollo</p><p class="hym2">Chorizo</p>
+    <div class="third"><img class="tortimg" src="images/chrojo.jpg"></div>
+    <div class="third"><img class="tortimg" src="images/pollo.jpg"></div>
+    <div class="third"><img class="tortimg" src="images/chorizo.jpg"></div>
+    </div>
+
+
+
+    
+</body>

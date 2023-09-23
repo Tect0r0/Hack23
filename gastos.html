@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>QuesaGods</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body  onload="hora()">
+    <div class="menupaginas">
+        <p class="timep" id="time"></p>
+        <h1 class="maintitle">PhatManagement</h1>
+        <div class="pagebutton"><a href="inventario.html">Inventario</a></div>
+        <div class="pagebutton"><a href="ventas.html">Ventas</a></div>
+        <div class="pagebutton"><a href="gastos.html">Gastos</a></div>
+        <div class="pagebutton"><a href="indexH.html"><img class="tortimg" src="images/home.png"></a></div>
+    </div>
+    <script>
+
+        function submitContacto(){
+            
+            
+            var p1 = document.getElementById("name").value;
+            var p2 = document.getElementById("tel").value;
+            var p3 = document.getElementById("mail").value;
+            
+            if (p1 == "" || p2 == "" || p3 == ""){
+                alert("Llena correctamente todos los datos para nosotros podernos comunicar contigo para responder tu pregunta.");
+            } else {
+            
+            var serializedData = $('#contactoForm').serialize();
+                $.ajax({
+                    type: "POST",
+                    url: "sendContacto.php",
+                    data: serializedData
+                }).done(function() {
+                        alert( "¡Gracias por contactarnos!" );
+                        jQuery('#contactoForm')[0].reset();	
+                });	
+            }
+
+        }
+        function hora(){
+            var d = new Date();
+            var hora = d.getHours();
+            var min = d.getMinutes();
+            var seg = d.getSeconds();
+
+            var segundos = "";
+            if(seg<10){
+                segundos = "0" + seg;
+            } else{
+                segundos = "" + seg;
+            }
+
+            var minutos = "";
+            if(min<10){
+                minutos = "0" + min;
+            } else{
+                minutos = "" + min;
+            }
+
+            var horas = "";
+            if(hora<10){
+                horas = "0" + hora;
+            } else{
+                horas = "" + hora;
+            }
+
+            document.getElementById("time").innerHTML = horas + ":" + minutos + ":" + segundos;
+        }
+        setInterval(hora, 1000);
+    </script>
+
+<p class="dioses3">Si tiene dudas sobre cualquier cosa sobre la página y el producto, llene el siguiente formato para ponerse en contacto con nuestro equipo. </p>
+|<form id="contactoForm" method="post">
+        
+        <label for="name">Nombre</label>
+        <input class="contact" name="name" type="text" id="name" value="" /><br/>
+        
+        <label for="tel" >Teléfono</label>
+        <input class="contact" name="tel"  type="text" id="tel" value=""/> <br/>
+    
+        <label for="mail" >E-mail</label>
+        <input class="contact" name="mail" type="text" id="mail" value=""/> <br/>
+    
+        <label for="message">Comentarios</label>
+        <textarea name="message"  id="message" cols="20" rows="7" ></textarea>
+    
+        <input class="contact" type="hidden" id="myemail" name="myemail" value="a01198479@tec.mx" />
+    
+        <input class="sendbutt" name="send" type="button" value="Enviar" id="send" onClick="submitContacto()"/>
+        
+    </form>
+
+
+</body>

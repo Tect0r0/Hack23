@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>QuesaGods</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="menupaginas">
+        <p class="timep" id="time"></p>
+        <h1 class="maintitle">PhatManagement</h1>
+        <div class="pagebutton"><a href="inventario.html">Inventario</a></div>
+        <div class="pagebutton"><a href="ventas.html">Ventas</a></div>
+        <div class="pagebutton"><a href="gastos.html">Gastos</a></div>
+        <div class="pagebutton"><a href="indexH.html"><img class="tortimg" src="images/home.png"></a></div>
+    </div>
+    <script>
+        var inputsth = [""]
+        var inputsch = [""]
+        var inputstm = [""]
+        var inputscm = [""]
+        var precioqh = 0;
+        var preciochih = 0;
+        var precioph = 0;
+        var preciochoh = 0;
+        var precioqm = 0;
+        var preciochim = 0;
+        var preciopm = 0;
+        var preciochom = 0;
+
+        window.onload=function(){
+            hora();
+            llenartabla();
+            diahoy();
+        }
+
+        var canasta = ["Queso", "Chicharrón", "Pollo", "Chorizo"]
+        var harina = [10, 16, 15, 19]
+        var maiz = [12, 18, 17, 21]
+        
+        function hola(){
+            alert("hola");
+        }
+
+        function llenarorden(){
+            document.getElementByID("ordenes").innerHTML = "3";
+        }
+
+        function agregartacos(){
+            var tacosh = document.getElementById("num1").value;
+            var costoh = document.getElementById("num2").value*1;
+            var tacosm = document.getElementById("num3").value;
+            var costom = document.getElementById("num4").value*1;
+            var texto2 = "";
+            if(tacosh =="Queso" || tacosh =="Chicharrón" || tacosh =="Pollo" || tacosh =="Chorizo" || tacosm =="Queso" || tacosm =="Chicharrón" || tacosm =="Pollo" || tacosm =="Chorizo"){
+                inputsth.push(tacosh);
+                inputsch.push(costoh);
+                inputstm.push(tacosm);
+                inputscm.push(costom);
+                for(var i=0; i<inputsth.length; i++){
+                texto2 = texto2 + "<tr>";
+                texto2 = texto2 + "<td>" + inputsth[i] + "</td>";
+                texto2 = texto2 + "<td>" + inputsch[i] + "</td>";
+                texto2 = texto2 + "<td>" + inputstm[i] + "</td>";
+                texto2 = texto2 + "<td>" + inputscm[i] + "</td>";
+                texto2 = texto2 + "</tr>";
+                }
+                document.getElementById("ordenes").innerHTML = texto2;
+            } else{
+                document.getElementById("ordenes").innerHTML = "ERROR";
+            }
+            var costoqh = 0;
+            var costochih = 0;
+            var costoph = 0;
+            var costochoh = 0;
+            var costoqm = 0;
+            var costochim = 0;
+            var costopm = 0;
+            var costochom = 0;
+
+            if(tacosh == "Queso"){
+                posqh = 0;
+                costoqh = costoh*harina[posqh];
+            } 
+            if(tacosh == "Chicharrón"){
+                poschih = 1;
+                costochih = costoh*harina[poschih];
+            } 
+            if(tacosh == "Pollo"){
+                posph = 2;
+                costoph = costoh*harina[posph];
+            } 
+            if(tacosh == "Chorizo"){
+                poschoh = 3;
+                costochoh = costoh*harina[poschoh];
+            } 
+            if(tacosm == "Queso"){
+                posqm = 0;
+                costoqm = costom*harina[posqm];
+            } 
+            if(tacosm == "Chicharrón"){
+                poschim = 1;
+                costochim = costom*harina[poschim];
+            } 
+            if(tacosm == "Pollo"){
+                pospm = 2;
+                costopm = costom*harina[pospm];
+            } 
+            if(tacosm == "Chorizo"){
+                poschom = 3;
+                costochom = costom*harina[poschom];
+            }
+            var preciototal = costoqh + costochih + costoph + costochoh + costoqm + costochim + costopm + costochom;
+            document.getElementById("costototal").innerHTML = "El precio de su orden es de: " + preciototal*1.16 + " pesos mexicanos (incluye IVA)";
+            llenartabla();
+        }
+
+        function diahoy(){
+            var dias = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+            var meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviember", "Diciembre"];
+            var d = new Date();
+            var day = d.getDate(); //Día del mes
+
+            var dia = 0;
+            var diaa = "";
+
+            var dayweek = d.getDay(); //Día de la semana
+
+            var month = d.getMonth(); //Mes
+
+            var year = d.getFullYear(); //Año
+            dia = day + 3;
+            diaa = dayweek + 3;
+
+
+
+            document.getElementById("llegada").innerHTML = "Su orden llegará el " + dia + " de " + meses[month] + " a las 12:00 p.m.";
+        }
+        
+        function llenartabla(){
+
+            var texto = "";
+
+            for(var i=0; i<canasta.length; i++){
+                texto = texto + "<tr>";
+                texto = texto + "<td>" + canasta[i] + "</td>";
+                texto = texto + "<td>" + harina[i] + "</td>";
+                texto = texto + "<td>" + maiz[i] + "</td>";
+                texto = texto + "</tr>";
+            }
+            document.getElementById("canasta").innerHTML = texto;
+        }
+            
+        function alerta(){
+            alert("Una disculpa no tenemos tacos :)")
+        }
+
+        function hora(){
+            var d = new Date();
+            var hora = d.getHours();
+            var min = d.getMinutes();
+            var seg = d.getSeconds();
+
+            var segundos = "";
+            if(seg<10){
+                segundos = "0" + seg;
+            } else{
+                segundos = "" + seg;
+            }
+
+            var minutos = "";
+            if(min<10){
+                minutos = "0" + min;
+            } else{
+                minutos = "" + min;
+            }
+
+            var horas = "";
+            if(hora<10){
+                horas = "0" + hora;
+            } else{
+                horas = "" + hora;
+            }
+
+            document.getElementById("time").innerHTML = horas + ":" + minutos + ":" + segundos;
+        }
+        setInterval(hora, 1000);
+    </script>
+
+    <h1 class="bienvenido2">Carrito</h1>
+    <h2 class="dioses">Precios:</h2>
+   
+    <!--Tabla aquí-->
+    <table>
+        <tr>
+            <th>Guiso</th>
+            <th>Harina</th>
+            <th>Maiz</th>
+        </tr>
+
+        <tbody id="canasta">
+
+        </tbody>
+
+       
+    </table>
+    <h2 class="dioses" alt="ordenaaqui">Ordena aquí:</h2>
+    <p class="rimg">Escriba el nombre del guiso en la izquierda y la cantidad a la derecha</p>
+    <p class="rimg">(Asegúrese de no equivocarse al hacer click en "agregar")</p>
+    <div class="wrapper">
+        <input type="text" id="num1" placeholder="Harina"/>
+        <input type="text" id="num3" placeholder="Maiz"/>
+        <input type="text" id="num2" placeholder="Cantidad"/>
+        <input type="text" id="num4" placeholder="Cantidad"/>
+        <div class="buttonor" onClick="agregartacos()">Agregar tacos</div>
+    </div>
+    <p class="rimg" id="costototal"></p>
+    <div class="buttonor2" onClick=alerta()>Ordenar tacos</div>
+    
+
+    <div class="orden">
+        <h2>Su orden:</h2><br>
+        <table class="table2">
+            <tr>
+            </tr>
+            <tbody id="ordenes">
+            </tbody>
+        </table>
+        <table class="table2">
+            <tr>
+            </tr>
+            <tbody id="ordenes2">
+            </tbody>
+        </table>
+
+    </div>
+    
+
+
+</body>
